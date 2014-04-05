@@ -1,0 +1,12 @@
+//TODO - reconsider sleep function in Game
+//TODO - implement setFocusEntity()
+//TODO - Completely change Renderer (should be API-like)
+//TODO - Completely change MessageHandler / Messages (should be more like data objects - not behavioral)
+//TODO - Clean out Entity (it should be basically empty)
+//TODO - Remove Component class
+//TODO - EntityStore class seems unnecessary
+//TODO - Clean out GraphicsComponent (does too much stuff)
+//TODO - Overhaul Logic schema (look into hierarchical state machines)
+//TODO - Clean out PhysicsComponent
+//TODO - Consider using Entity Component System?
+//TODO - After clean up, consider pushing Simulator functionality into Game
