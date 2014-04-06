@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS=-c -Wall
 LDFLAGS=-lBox2D -lsfml-graphics -lsfml-window -lsfml-system
-SOURCES=$(wildcard Game/*.cpp) $(wildcard Entity/*.cpp) $(wildcard Physics/*.cpp) $(wildcard Utils/*.cpp) $(wildcard Graphics/*.cpp) $(wildcard Message/*.cpp) $(wildcard Message/Messages/*.cpp) $(wildcard Logic/*.cpp)
+SOURCES=$(wildcard Game/*.cpp) $(wildcard Entity/*.cpp) $(wildcard Physics/*.cpp) $(wildcard Utils/*.cpp) $(wildcard Graphics/*.cpp)
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=out
 
@@ -26,4 +26,4 @@ mathdemo:
 	$(CC) $(CFLAGS) $< -o $@
 
 clean:
-	rm -rf $(EXECUTABLE) sfmldemo boxdemo mathdemo *.o Game/*.o Utils/*.o Physics/*.o Entity/*.o Demos/*.o Graphics/*.o Message/*.o Message/Messages/*.o Logic/*.o lib/*
+	rm -rf $(EXECUTABLE) sfmldemo boxdemo mathdemo *.o Game/*.o Utils/*.o Physics/*.o Entity/*.o Demos/*.o Graphics/*.o lib/*

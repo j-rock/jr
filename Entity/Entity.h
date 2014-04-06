@@ -1,42 +1,38 @@
 #ifndef GAME_ENTITY_H
 #define GAME_ENTITY_H
 
+#include <vector>
 #include "../Graphics/GraphicsComponent.h"
-#include "../Logic/LogicComponent.h"
-#include "../Message/Message.h"
-#include "../Message/MessageHandler.h"
 #include "../Physics/PhysicsComponent.h"
 #include "../Utils/bbox.h"
 
 namespace jr
 {
 
-class Entity : public MessageHandler
+using std::vector;
+
+class Entity
 {
 	public:
-    Entity(GraphicsComponent* g, LogicComponent* l, PhysicsComponent* p);
+    Entity(GraphicsComponent* g, PhysicsComponent* p);
     virtual ~Entity();
 
-    PhysicsComponent* getPhysicsComponent();
-    Message* getCollideMessage();
-    Message* getUncollideMessage();
+    virtual void update() = 0;
     bbox<float> getBounds();
-    void setSimHandler(MessageHandler* simulator);
-    void setRendererHandler(MessageHandler* renderer);
-    void setChildHandlers();
-    void update();
-    void sendPhysicsComponentUpdate();
-    bool inWorldSpace();
-    void takeMessage(Message* m);
+    PhysicsComponent* getPhysicsComponent();
+    bool shouldDelete();
+    bool isParent();
+    vector<Entity*>& getChildren();
 
-    static void init();
-    static void swap();
-
+  protected:
+    void scheduleDeletion(); 
+    void instantiate(Entity* child);
 
 	private:
     GraphicsComponent* gcomp;
-    LogicComponent* lcomp;
     PhysicsComponent* pcomp;
+    bool deleteMe;
+    vector<Entity*> children;
 };
 
 }

@@ -3,9 +3,7 @@
 
 #include <Box2D/Box2D.h>
 #include "PhysicsComponent.h"
-#include "ContactMessenger.h"
 #include "../Entity/Entity.h"
-#include "../Message/MessageHandler.h"
 #include "../Utils/vec.h"
 
 namespace jr
@@ -13,7 +11,7 @@ namespace jr
 
 using Utils::vec;
 
-class PhysicsSimulator : public MessageHandler
+class PhysicsSimulator
 {
 	public:
 		PhysicsSimulator();
@@ -27,7 +25,6 @@ class PhysicsSimulator : public MessageHandler
 
 	private:
     b2World* world;
-    ContactMessenger* contacter;
     bbox<float> bounds;
 
     void init(vec<float> grav);

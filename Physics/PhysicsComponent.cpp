@@ -8,37 +8,9 @@ PhysicsComponent::~PhysicsComponent()
   //physics simulation takes care of deallocating b2Body
 }
 
-void PhysicsComponent::setHandlers(MessageHandler* gcomp, MessageHandler* lcomp)
-{
-  GRAPHICS_HANDLER = subscribe(gcomp);
-  LOGIC_HANDLER = subscribe(lcomp);
-}
-
-
 void PhysicsComponent::leaveWorld()
 {
   body->GetWorld()->DestroyBody(body);
-}
-
-void PhysicsComponent::update()
-{
-  processMessages();
-}
-
-void PhysicsComponent::sendUpdates()
-{
-  vec<float> pos = getPosition();
-  vec<float> vel = getVelocity();
-  float angle = getAngle();
-  Message* m1 = new UpdateMessage(pos, vel, angle);
-  Message* m2 = new UpdateMessage(pos, vel, angle);
-  send(GRAPHICS_HANDLER, m1);
-  send(LOGIC_HANDLER, m2);
-}
-
-void PhysicsComponent::setUserData(void* data)
-{
-  body->SetUserData(data);
 }
 
 void PhysicsComponent::setPosition(vec<float> pos)

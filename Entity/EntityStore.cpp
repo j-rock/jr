@@ -5,7 +5,6 @@ namespace jr
 
 EntityStore::EntityStore()
 {
-  Entity::init();
 }
 
 EntityStore::~EntityStore()
@@ -28,27 +27,33 @@ void EntityStore::remove(Entity* ent)
 
 void EntityStore::update()
 {
+  parents = new vector<Entity*>();
+  deleteMes = new vector<Entity*>();
   map<Entity*, Entity*>::iterator it;
   for(it=entities.begin(); it!=entities.end(); it++){
     Entity* ent = it->first;
-    ent->update();
-  }
-  Entity::swap();
-}
+    ent->act();
 
-void EntityStore::sendPhysicsComponentUpdates()
-{
-  map<Entity*, Entity*>::iterator it;
-  for(it=entities.begin(); it!=entities.end(); it++){
-    Entity* ent = it->first;
-    ent->sendPhysicsComponentUpdate();
+    if(ent->isParent())
+      parents->push_back(ent);
+    if(ent->shouldDelete())
+      deleteMes->push_back(ent);
   }
 }
-
 
 bool EntityStore::contains(Entity* ent)
 {
   return entities.count(ent);
+}
+
+vector<Entity*>& EntityStore::getParents()
+{
+  return parents;
+}
+
+vector<Entity*>& EntityStore::deletes()
+{
+  return deleteMes;
 }
 
 }

@@ -7,8 +7,6 @@ void PhysicsSimulator::init(vec<float> grav)
 {
   b2Vec2 gravity(grav.x, grav.y);
   world = new b2World(gravity);
-  contacter = new ContactMessenger();
-  world->SetContactListener(contacter);
 }
 
 PhysicsSimulator::PhysicsSimulator(vec<float> grav)
@@ -27,16 +25,13 @@ PhysicsSimulator::PhysicsSimulator()
 PhysicsSimulator::~PhysicsSimulator()
 {
   delete world;
-  delete contacter;
 }
 
 void PhysicsSimulator::add(Entity* ent)
 {
   PhysicsComponent* pc = ent->getPhysicsComponent();
   pc->enterWorld(world);
-  pc->setUserData(ent);
-  if(ent->inWorldSpace())
-    bounds.expandWith(pc->getBounds());
+  bounds.expandWith(pc->getBounds());
 }
 
 void PhysicsSimulator::remove(Entity* ent)

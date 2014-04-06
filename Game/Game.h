@@ -5,7 +5,8 @@
 #include <SFML/System.hpp>
 #include "../Graphics/Renderer.h"
 #include "../Entity/Entity.h"
-#include "Simulator.h"
+#include "../Entity/EntityStore.h"
+#include "../Physics/PhysicsSimulator.h"
 
 namespace jr
 {
@@ -16,18 +17,24 @@ using Utils::bbox;
 class Game
 {
   public:
-    Game();
     Game(vector<Entity*>& ents);
     virtual ~Game();
 
     void play();
 
   private:
-    Simulator* simulator;
     Renderer* renderer;
+    EntityStore* entities;
+    PhysicsSimulator* physicsSim;
 
-    void init(vector<Entity*>& ents);
+    void add(Entity* ent);
+    void remove(Entity* ent);
+    void update();
     void sleep(sf::Time elapsed);
+
+    void addChildren(vector<Entity*>& children);
+    void addParentsChildren(vector<Entity*>& parents);
+    void removeDeletes(vector<Entity*>& deletes);
 };
 
 }

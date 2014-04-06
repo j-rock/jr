@@ -1,8 +1,0 @@
-#include "Message/Message.h"
-#include "Message/MessageComparer.h"
-#include "Message/MessageHandler.h"
-#include "Message/Messages/CameraPositionMessage.h"
-#include "Message/Messages/DrawMeMessage.h"
-#include "Message/Messages/RemoveEntityMessage.h"
-#include "Message/Messages/UpdateBoundsMessage.h"
-#include "Message/Messages/UpdateMessage.h"
