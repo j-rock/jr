@@ -13,11 +13,19 @@ class GraphicsComponent
 		GraphicsComponent();
 		virtual ~GraphicsComponent();
 
-    virtual void draw() = 0;
+    virtual void drawWorld(float x, float y);
+    virtual void drawPixel(int x, int y);
     void setDrawer(Drawer* d);
 
   protected:
     Drawer* drawer;
+    int priority;
+
+    virtual void changeImagePosition(int x, int y) = 0;
+    virtual sf::Drawable* getDrawable() = 0;
+
+  private:
+    void doDraw(int x, int y);
 
 };
 

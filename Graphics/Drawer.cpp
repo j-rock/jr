@@ -10,6 +10,7 @@ Drawer::Drawer(Renderer* r)
 
 Drawer::~Drawer()
 {
+  //renderer will be deleted by Game
 }
 
 void Drawer::draw(sf::Drawable* img, int priority)
