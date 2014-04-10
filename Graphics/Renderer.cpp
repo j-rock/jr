@@ -14,6 +14,15 @@ Renderer::~Renderer()
   delete window;
 }
 
+Renderer::DrawObject::DrawObject(sf::Drawable* i, int p) : image(i), priority(p)
+{
+}
+
+bool Renderer::DrawObjectComparer::operator()(void* a, void* b)
+{
+  return ((DrawObject*)a)->priority - ((DrawObject*)b)->priority;
+}
+
 bool Renderer::isWindowOpen()
 {
   return window->isOpen();
@@ -59,19 +68,30 @@ int Renderer::pixelConvertY(float realY)
   return -pixelConvert(realY) - pixelBounds.minY;
 }
 
+void Renderer::draw(sf::Drawable* img, int priority)
+{
+  DrawObject* d = new DrawObject(img, priority);
+  drawQueue.push(d);
+}
+
 void Renderer::render()
 {
    window->clear();
-
-   //TODO - have some sort of DrawStruct
-   /*
-      while(!drawQueue.empty())
-        draw = drawQueue.top(); drawQueue.pop();
-        window->draw(draw)....
-   */
-
+   while(!drawQueue.empty()){
+     DrawObject* d = drawQueue.top();
+     drawQueue.pop();
+     window->draw(*(d->image));
+     delete d;
+   }
    window->display();
 }
+
+
+
+
+
+
+
 
 }
 

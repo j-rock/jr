@@ -1,11 +1,3 @@
-Coverage:
--Physics
--Utils
--Game
-
-
-//TODO - Completely change Renderer (should be API-like)
-
-//TODO - reconsider sleep function in Game
 //TODO - implement setFocusEntity()
 //TODO - Overhaul Logic schema (look into hierarchical state machines)
+//TODO - Make GraphicsComponent use "drawing" api

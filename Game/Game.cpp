@@ -7,9 +7,8 @@ namespace jr
 
 Game::Game(vector<Entity*>& ents)
 {
-  //maybe use Renderer::Init(900, 550, "Game");
   renderer = new Renderer(900, 550, "Game");
-  entities = new EntityStore();
+  entities = new EntityStore(new Drawer(renderer));
   physicsSim = new PhysicsSimulator();
 
   for(std::size_t i=0; i<ents.size(); i++)
@@ -62,8 +61,9 @@ void Game::update()
   entities->update();
   addParentsChildren(entities->getParents());
   removeDeletes(entities->deletes());
-  //TODO - must inform graphics of new bounds
   physicsSim->update();
+  //TODO - look into refreshing bounds on every update (if not too costly)
+  renderer->updateBounds(physicsSim->getBounds());
 }
 
 
@@ -71,7 +71,7 @@ void Game::play()
 {
   sf::Clock clock;
   while (renderer->isWindowOpen()){
-    simulator->update();
+    update();
     sleep(clock.restart());
     renderer->render();
     renderer->pollEvents();
@@ -80,7 +80,7 @@ void Game::play()
 
 void Game::sleep(sf::Time elapsed)
 {
-  //Reconsider choice of sleep function
+  //TODO - Reconsider choice of sleep function
   sf::Time maxSleep = sf::milliseconds(16); //for 60 fps
   sf::Time sleepTime;
   if(maxSleep > elapsed)

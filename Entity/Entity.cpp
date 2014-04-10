@@ -37,7 +37,12 @@ bool Entity::isParent()
   return children.size() > 0;
 }
 
-vector<Entity*>& getChildren()
+void Entity::setDrawer(Drawer* d)
+{
+  gcomp->setDrawer(d);
+}
+
+vector<Entity*>& Entity::getChildren()
 {
   return children;
 }

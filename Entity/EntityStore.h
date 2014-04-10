@@ -4,6 +4,7 @@
 #include <map>
 #include <vector>
 #include "Entity.h"
+#include "../Graphics/Drawer.h"
 
 namespace jr
 {
@@ -14,7 +15,7 @@ using std::vector;
 class EntityStore
 {
 	public:
-		EntityStore();
+		EntityStore(Drawer* d);
 		~EntityStore();
 
     void add(Entity* ent);
@@ -27,6 +28,7 @@ class EntityStore
     map<Entity*, Entity*> entities;
     vector<Entity*> parents;
     vector<Entity*> deleteMes;
+    Drawer* drawer;
 
     bool contains(Entity* ent);
 };

@@ -23,6 +23,7 @@ class Entity
     bool shouldDelete();
     bool isParent();
     vector<Entity*>& getChildren();
+    void setDrawer(Drawer* d);
 
   protected:
     void scheduleDeletion(); 
