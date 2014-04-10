@@ -8,7 +8,6 @@
 #include "Drawer.h"
 #include "../Utils/bbox.h"
 #include "../Utils/vec.h"
-#include "../Utils/Comparer.h"
 #include "../Utils/Math.h"
 
 namespace jr
@@ -38,20 +37,13 @@ class Renderer
     class DrawObject{
       public:
         DrawObject(sf::Drawable* i, int p);
+        bool operator<(const DrawObject& rhs) const;
         sf::Drawable* image;
         int priority;
     };
 
-    class DrawObjectComparer : public Comparer {
-      public:
-        virtual bool operator()(void* a, void* b);
-    };
-
-
     sf::RenderWindow* window;
-    priority_queue<DrawObject*,
-                   vector<DrawObject*>,
-                   DrawObjectComparer> drawQueue;
+    priority_queue<DrawObject> drawQueue;
     bbox<int> pixelBounds;
     int PIXELS_PER_METER;
 

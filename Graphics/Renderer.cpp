@@ -18,9 +18,9 @@ Renderer::DrawObject::DrawObject(sf::Drawable* i, int p) : image(i), priority(p)
 {
 }
 
-bool Renderer::DrawObjectComparer::operator()(void* a, void* b)
+bool Renderer::DrawObject::operator<(const DrawObject& rhs) const
 {
-  return ((DrawObject*)a)->priority - ((DrawObject*)b)->priority;
+  return priority < rhs.priority;
 }
 
 bool Renderer::isWindowOpen()
@@ -70,7 +70,7 @@ int Renderer::pixelConvertY(float realY)
 
 void Renderer::draw(sf::Drawable* img, int priority)
 {
-  DrawObject* d = new DrawObject(img, priority);
+  DrawObject d(img, priority);
   drawQueue.push(d);
 }
 
@@ -78,10 +78,9 @@ void Renderer::render()
 {
    window->clear();
    while(!drawQueue.empty()){
-     DrawObject* d = drawQueue.top();
+     DrawObject d = drawQueue.top();
      drawQueue.pop();
-     window->draw(*(d->image));
-     delete d;
+     window->draw(*(d.image));
    }
    window->display();
 }
