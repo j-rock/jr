@@ -13,9 +13,11 @@ class RectShape : public jr::GraphicsComponent
 		RectShape(float w, float h);
 		~RectShape();
 
+    void setAngle(float radAngle);
+
   protected:
     sf::Drawable* getDrawable();
-    void changeImagePosition(int x, int y);
+    void setPosition(int x, int y);
 
 	private:
     sf::RectangleShape image;

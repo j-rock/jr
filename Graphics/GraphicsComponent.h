@@ -17,12 +17,13 @@ class GraphicsComponent
     virtual void drawPixel(int x, int y);
     void setDrawer(Drawer* d);
     void setPriority(int p);
+    virtual void setPosition(int x, int y) = 0;
+    virtual void setAngle(float angle);
 
   protected:
     Drawer* drawer;
     int priority;
 
-    virtual void changeImagePosition(int x, int y) = 0;
     virtual sf::Drawable* getDrawable() = 0;
 
   private:

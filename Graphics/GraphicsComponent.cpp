@@ -26,7 +26,7 @@ void GraphicsComponent::drawPixel(int x, int y)
 
 void GraphicsComponent::doDraw(int x, int y)
 {
-  changeImagePosition(x, y);
+  setPosition(x, y);
   drawer->draw(getDrawable(), priority);
 }
 
@@ -38,6 +38,11 @@ void GraphicsComponent::setDrawer(Drawer* d)
 void GraphicsComponent::setPriority(int p)
 {
   priority = p;
+}
+
+void GraphicsComponent::setAngle(float a)
+{
+  (void)a;
 }
 
 }

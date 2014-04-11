@@ -18,7 +18,7 @@ class NoGraphics : public jr::GraphicsComponent
 
   protected:
     sf::Drawable* getDrawable();
-    void changeImagePosition(int x, int y);
+    void setPosition(int x, int y);
 };
 
 }

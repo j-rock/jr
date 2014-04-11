@@ -28,7 +28,7 @@ sf::Drawable* NoGraphics::getDrawable()
   return 0;
 }
 
-void NoGraphics::changeImagePosition(int x, int y)
+void NoGraphics::setPosition(int x, int y)
 {
   (void)x;
   (void)y;

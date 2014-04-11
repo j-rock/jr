@@ -23,6 +23,8 @@ void DynBox::enterWorld(b2World* world)
 
   b2FixtureDef fixDef;
   fixDef.shape = &shape;
+  fixDef.density = 1;
+
 
   body = world->CreateBody(&bodyDef);
   body->CreateFixture(&fixDef);

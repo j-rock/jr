@@ -21,9 +21,14 @@ sf::Drawable* RectShape::getDrawable()
   return &image;
 }
 
-void RectShape::changeImagePosition(int x, int y)
+void RectShape::setPosition(int x, int y)
 {
   image.setPosition(x, y);
+}
+
+void RectShape::setAngle(float rad)
+{
+  image.setRotation(-rad * 180 / 3.14159265358);
 }
 
 

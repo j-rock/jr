@@ -16,6 +16,8 @@ Box::~Box()
 void Box::update()
 {
   vec<float> pos = pcomp->getPosition();
+  float ang = pcomp->getAngle();
+  gcomp->setAngle(ang);
   gcomp->drawWorld(pos.x, pos.y);
 }
 
