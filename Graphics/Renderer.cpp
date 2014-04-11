@@ -6,7 +6,7 @@ namespace jr
 Renderer::Renderer(int width, int height, std::string title)
 {
   window = new sf::RenderWindow(sf::VideoMode(width, height), title);
-  PIXELS_PER_METER = 100;
+  PIXELS_PER_METER = 10;
 }
 
 Renderer::~Renderer()

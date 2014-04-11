@@ -35,4 +35,9 @@ void GraphicsComponent::setDrawer(Drawer* d)
   drawer = d;
 }
 
+void GraphicsComponent::setPriority(int p)
+{
+  priority = p;
+}
+
 }

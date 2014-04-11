@@ -42,6 +42,11 @@ void Entity::setDrawer(Drawer* d)
   gcomp->setDrawer(d);
 }
 
+void Entity::setPriority(int p)
+{
+  gcomp->setPriority(p);
+}
+
 vector<Entity*>& Entity::getChildren()
 {
   return children;

@@ -3,6 +3,11 @@
 namespace jr
 {
 
+PhysicsComponent::PhysicsComponent()
+{
+  body = 0;
+}
+
 PhysicsComponent::~PhysicsComponent()
 {
   //physics simulation takes care of deallocating b2Body
@@ -10,7 +15,8 @@ PhysicsComponent::~PhysicsComponent()
 
 void PhysicsComponent::leaveWorld()
 {
-  body->GetWorld()->DestroyBody(body);
+  if(body)
+    body->GetWorld()->DestroyBody(body);
 }
 
 void PhysicsComponent::setPosition(vec<float> pos)

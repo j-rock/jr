@@ -26,12 +26,14 @@ class Entity
     void setDrawer(Drawer* d);
 
   protected:
-    void scheduleDeletion(); 
-    void instantiate(Entity* child);
-
-	private:
     GraphicsComponent* gcomp;
     PhysicsComponent* pcomp;
+
+    void scheduleDeletion(); 
+    void instantiate(Entity* child);
+    void setPriority(int p);
+
+	private:
     bool deleteMe;
     vector<Entity*> children;
 };
