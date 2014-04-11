@@ -14,6 +14,7 @@ using Utils::vec;
 class PhysicsComponent
 {
 	public:
+    PhysicsComponent();
     virtual ~PhysicsComponent();
 
     void leaveWorld();

@@ -1,1 +1,1 @@
-make clean && make && rm main.o out
+make clean && make
