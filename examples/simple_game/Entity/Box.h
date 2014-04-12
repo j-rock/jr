@@ -18,6 +18,9 @@ class Box : public jr::Entity
 		~Box();
 
     virtual void update();
+
+  private:
+    float size, x, y;
 };
 
 }

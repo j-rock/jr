@@ -58,7 +58,7 @@ void Entity::scheduleDeletion()
 }
 
 
-void Entity::instantiate(Entity* child)
+void Entity::spawn(Entity* child)
 {
   children.push_back(child);
 }

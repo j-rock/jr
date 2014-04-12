@@ -30,7 +30,7 @@ class Entity
     PhysicsComponent* pcomp;
 
     void scheduleDeletion(); 
-    void instantiate(Entity* child);
+    void spawn(Entity* child);
     void setPriority(int p);
 
 	private:
