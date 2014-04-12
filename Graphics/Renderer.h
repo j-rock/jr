@@ -31,6 +31,7 @@ class Renderer
     void updateBounds(bbox<float> newBounds);
     void draw(sf::Drawable* img, int priority);
     void render();
+    void clearQueue();
     
   private:
 

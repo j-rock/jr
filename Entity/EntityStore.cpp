@@ -32,16 +32,30 @@ void EntityStore::update()
 {
   parents.clear();
   deleteMes.clear();
+  newContext.clear();
   map<Entity*, Entity*>::iterator it;
   for(it=entities.begin(); it!=entities.end(); it++){
     Entity* ent = it->first;
     ent->update();
 
+    if(ent->wantsToSwitch())
+      for(std::size_t i=0; i<ent->getNewContext().size(); i++)
+        newContext.push_back(ent->getNewContext()[i]);
     if(ent->isParent())
       parents.push_back(ent);
     if(ent->shouldDelete())
       deleteMes.push_back(ent);
   }
+}
+
+bool EntityStore::wantsToSwitchContext()
+{
+  return newContext.size() > 0; 
+}
+
+vector<Entity*>& EntityStore::getNewContext()
+{
+  return newContext;
 }
 
 bool EntityStore::contains(Entity* ent)

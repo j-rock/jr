@@ -42,6 +42,23 @@ void Entity::setDrawer(Drawer* d)
   gcomp->setDrawer(d);
 }
 
+bool Entity::wantsToSwitch()
+{
+  return newContext.size() > 0;
+}
+
+vector<Entity*>& Entity::getNewContext()
+{
+  return newContext;
+}
+
+void Entity::switchContext(vector<Entity*> ents)
+{
+  newContext.clear();
+  for(std::size_t i=0; i<ents.size(); i++)
+    newContext.push_back(ents[i]);
+}
+
 void Entity::setPriority(int p)
 {
   gcomp->setPriority(p);

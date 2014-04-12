@@ -35,6 +35,7 @@ class Game
     void addChildren(vector<Entity*>& children);
     void addParentsChildren(vector<Entity*>& parents);
     void removeDeletes(vector<Entity*>& deletes);
+    void switchContext(vector<Entity*>& ents);
 };
 
 }

@@ -24,6 +24,9 @@ class Entity
     bool isParent();
     vector<Entity*>& getChildren();
     void setDrawer(Drawer* d);
+    bool wantsToSwitch();
+    vector<Entity*>& getNewContext();
+
 
   protected:
     GraphicsComponent* gcomp;
@@ -32,10 +35,12 @@ class Entity
     void scheduleDeletion(); 
     void spawn(Entity* child);
     void setPriority(int p);
+    void switchContext(vector<Entity*> ents);
 
 	private:
     bool deleteMe;
     vector<Entity*> children;
+    vector<Entity*> newContext;
 };
 
 }

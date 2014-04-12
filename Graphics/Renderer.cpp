@@ -74,6 +74,12 @@ void Renderer::draw(sf::Drawable* img, int priority)
   drawQueue.push(d);
 }
 
+void Renderer::clearQueue()
+{
+  while(!drawQueue.empty())
+    drawQueue.pop();
+}
+
 void Renderer::render()
 {
    window->clear();

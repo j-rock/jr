@@ -23,11 +23,14 @@ class EntityStore
     void update();
     vector<Entity*>& getParents();
     vector<Entity*>& deletes();
+    vector<Entity*>& getNewContext();
+    bool wantsToSwitchContext();
 
 	private:
     map<Entity*, Entity*> entities;
     vector<Entity*> parents;
     vector<Entity*> deleteMes;
+    vector<Entity*> newContext;
     Drawer* drawer;
 
     bool contains(Entity* ent);

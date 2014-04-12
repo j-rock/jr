@@ -22,6 +22,20 @@ Game::~Game()
   delete renderer;
 }
 
+void Game::switchContext(vector<Entity*>& ents)
+{
+  delete physicsSim;
+  delete entities;
+
+  entities = new EntityStore(new Drawer(renderer));
+  physicsSim = new PhysicsSimulator();
+
+  for(std::size_t i=0; i<ents.size(); i++)
+    add(ents[i]);
+
+  renderer->clearQueue();
+}
+
 void Game::add(Entity* ent)
 {
   entities->add(ent);
@@ -61,9 +75,14 @@ void Game::update()
   entities->update();
   addParentsChildren(entities->getParents());
   removeDeletes(entities->deletes());
+  if(entities->wantsToSwitchContext()){
+    switchContext(entities->getNewContext());
+    return;
+  }
   physicsSim->update();
   //TODO - look into refreshing bounds on every update (if not too costly)
   renderer->updateBounds(physicsSim->getBounds());
+  renderer->render();
 }
 
 
@@ -72,9 +91,8 @@ void Game::play()
   sf::Clock clock;
   while (renderer->isWindowOpen()){
     update();
-    sleep(clock.restart());
-    renderer->render();
     renderer->pollEvents();
+    sleep(clock.restart());
   }
 }
 
