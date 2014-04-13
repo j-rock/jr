@@ -36,6 +36,11 @@ void PhysicsComponent::setAngle(float angle)
   body->SetTransform(body->GetPosition(), angle);
 }
 
+void PhysicsComponent::setUserData(void* data)
+{
+  body->SetUserData(data);
+}
+
 bbox<float> PhysicsComponent::getBounds()
 {
   b2AABB aabb;

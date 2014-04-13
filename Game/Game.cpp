@@ -7,7 +7,7 @@ namespace jr
 
 Game::Game(vector<Entity*>& ents)
 {
-  renderer = new Renderer(900, 550, "Game");
+  renderer = new Renderer(1700, 950, "Game");
   entities = new EntityStore(new Drawer(renderer));
   physicsSim = new PhysicsSimulator();
 
@@ -30,8 +30,8 @@ void Game::switchContext(vector<Entity*>& ents)
   entities = new EntityStore(new Drawer(renderer));
   physicsSim = new PhysicsSimulator();
 
-  for(std::size_t i=0; i<ents.size(); i++)
-    add(ents[i]);
+  //for(std::size_t i=0; i<ents.size(); i++)
+    //add(ents[i]);
 
   renderer->clearQueue();
 }

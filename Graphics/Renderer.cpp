@@ -47,10 +47,16 @@ void Renderer::pollEvents()
 
 void Renderer::updateBounds(bbox<float> bounds)
 {
+  vec<float> world = bounds.getCenter();
   pixelBounds.minX = pixelConvert(bounds.minX);
   pixelBounds.maxX = pixelConvert(bounds.maxX);
   pixelBounds.minY = -pixelConvert(bounds.maxY);
   pixelBounds.maxY = -pixelConvert(bounds.minY);
+  sf::Vector2f size(pixelBounds.maxX - pixelBounds.minX,
+                    pixelBounds.maxY - pixelBounds.minY);
+  sf::Vector2f center(pixelConvertX(world.x), pixelConvertY(world.y));
+  sf::View newView(center, size);
+  window->setView(newView);
 }
 
 int Renderer::pixelConvert(float real)

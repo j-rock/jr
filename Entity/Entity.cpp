@@ -9,6 +9,7 @@ Entity::Entity(GraphicsComponent* g, PhysicsComponent* p)
   gcomp = g;
   pcomp = p;
   deleteMe = false;
+  collideCount = 0;
 }
 
 Entity::~Entity()
@@ -78,6 +79,21 @@ void Entity::scheduleDeletion()
 void Entity::spawn(Entity* child)
 {
   children.push_back(child);
+}
+
+void Entity::collideWith(Entity* other)
+{
+  collideCount++;
+}
+
+void Entity::endCollideWith(Entity* other)
+{
+  collideCount--;
+}
+
+bool Entity::isTouching()
+{
+  return collideCount > 0;
 }
 
 }

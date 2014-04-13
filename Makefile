@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-c -Wall
+CFLAGS=-c -Wall -g
 LDFLAGS=-lBox2D -lsfml-graphics -lsfml-window -lsfml-system
 SOURCES=$(wildcard Game/*.cpp) $(wildcard Entity/*.cpp) $(wildcard Physics/*.cpp) $(wildcard Utils/*.cpp) $(wildcard Graphics/*.cpp)
 OBJECTS=$(SOURCES:.cpp=.o)

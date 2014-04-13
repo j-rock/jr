@@ -21,6 +21,7 @@ class PhysicsComponent
     virtual void setPosition(vec<float> pos);
     virtual void setVelocity(vec<float> vel);
     virtual void setAngle(float angle);
+    virtual void setUserData(void* data);
     virtual bbox<float> getBounds();
     virtual vec<float> getPosition();
     virtual vec<float> getVelocity();

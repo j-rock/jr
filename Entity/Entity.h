@@ -11,6 +11,7 @@ namespace jr
 
 using std::vector;
 
+//TODO - Clean up method ordering
 class Entity
 {
 	public:
@@ -18,6 +19,9 @@ class Entity
     virtual ~Entity();
 
     virtual void update() = 0;
+    virtual void collideWith(Entity* other);
+    virtual void endCollideWith(Entity* other);
+    virtual bool isTouching();
     bbox<float> getBounds();
     PhysicsComponent* getPhysicsComponent();
     bool shouldDelete();
@@ -39,6 +43,7 @@ class Entity
 
 	private:
     bool deleteMe;
+    int collideCount;
     vector<Entity*> children;
     vector<Entity*> newContext;
 };

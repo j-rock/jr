@@ -3,6 +3,7 @@
 
 #include <Box2D/Box2D.h>
 #include "PhysicsComponent.h"
+#include "CollideListener.h"
 #include "../Entity/Entity.h"
 #include "../Utils/vec.h"
 
@@ -25,6 +26,7 @@ class PhysicsSimulator
 
 	private:
     b2World* world;
+    CollideListener* listener;
     bbox<float> bounds;
 
     void init(vec<float> grav);
