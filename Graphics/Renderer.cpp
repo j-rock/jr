@@ -52,10 +52,10 @@ void Renderer::updateBounds(bbox<float> bounds)
   pixelBounds.maxX = pixelConvert(bounds.maxX);
   pixelBounds.minY = -pixelConvert(bounds.maxY);
   pixelBounds.maxY = -pixelConvert(bounds.minY);
-  sf::Vector2f size(pixelBounds.maxX - pixelBounds.minX,
-                    pixelBounds.maxY - pixelBounds.minY);
+  sf::Vector2u size = window->getSize();
+  sf::Vector2f viewSize(size.x, size.y);
   sf::Vector2f center(pixelConvertX(world.x), pixelConvertY(world.y));
-  sf::View newView(center, size);
+  sf::View newView(center, viewSize);
   window->setView(newView);
 }
 
