@@ -29,6 +29,7 @@ class Entity
     vector<Entity*>& getChildren();
     void setDrawer(Drawer* d);
     bool wantsToSwitch();
+    void scheduleDeletion(); 
     vector<Entity*>& getNewContext();
 
 
@@ -36,7 +37,6 @@ class Entity
     GraphicsComponent* gcomp;
     PhysicsComponent* pcomp;
 
-    void scheduleDeletion(); 
     void spawn(Entity* child);
     void setPriority(int p);
     void switchContext(vector<Entity*> ents);

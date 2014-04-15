@@ -20,7 +20,7 @@ PhysicsSimulator::PhysicsSimulator(vec<float> grav)
 PhysicsSimulator::PhysicsSimulator()
   : bounds(FLT_MAX,FLT_MIN,FLT_MAX,FLT_MIN)
 {
-  vec<float> grav(0.0f, -9.81f);
+  vec<float> grav(0.0f, -19.81);
   init(grav);
 }
 

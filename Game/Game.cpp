@@ -1,4 +1,5 @@
 #include "Game.h"
+#include <cstdio> //TODO - remove
 
 #define MS_PER_UPDATE 16
 
@@ -22,16 +23,17 @@ Game::~Game()
   delete renderer;
 }
 
-void Game::switchContext(vector<Entity*>& ents)
+void Game::switchContext(vector<Entity*> ents)
 {
   delete physicsSim;
   delete entities;
 
+  vector<Entity*> newEnts = ents;
   entities = new EntityStore(new Drawer(renderer));
   physicsSim = new PhysicsSimulator();
 
-  //for(std::size_t i=0; i<ents.size(); i++)
-    //add(ents[i]);
+  for(std::size_t i=0; i<newEnts.size(); i++)
+    add(newEnts[i]);
 
   renderer->clearQueue();
 }
