@@ -1,2 +1,2 @@
 //TODO - implement setFocusEntity()
-//TODO - Overhaul Logic schema (look into hierarchical state machines)
+//TODO - implement RoadMap / Scene for game
